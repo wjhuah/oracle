@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屯南甲骨</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --background: #f9f9f9;
+            --success: #27ae60;
+            --error: #c0392b;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', '思源黑體', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            background: var(--background);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .search-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #numberInput {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        #numberInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        button {
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
+        #result {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success {
+            background: #e8f6ef;
+            color: var(--success);
+            border: 2px solid var(--success);
+            display: block;
+        }
+
+        .error {
+            background: #fdedec;
+            color: var(--error);
+            border: 2px solid var(--error);
+            display: block;
+        }
+
+        .result-item {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .search-group {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>小屯南地甲骨分期分類查詢系統</h1>
+        <div class="search-group">
+            <input type="number" id="numberInput" placeholder="請輸入甲骨版號" 
+                   min="1" step="1" inputmode="numeric">
+            <button onclick="searchLocal()">查詢</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+<script>
+let dataCache = null;
+
+document.getElementById('numberInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') searchLocal();
+});
+
+function searchLocal() {
+    const resultEl = document.getElementById('result');
+    const inputEl = document.getElementById('numberInput');
+    const number = inputEl.value.trim().padStart(3, '0'); 
+    
+    if (!number || isNaN(number) || number < 1) {
+        showError('請輸入有效的正整數版號');
+        inputEl.focus();
+        return;
+    }
+
+    if (!dataCache) {
+        showError('數據正在加載，請稍後...');
+        return;
+    }
+
+    const target = `.${number}.`;
+    let found = false;
+
+    dataCache.rows.some((row, rowIdx) => {
+        return row.some((cell, colIdx) => {
+            if (cell && cell.includes(target)) {
+                const period = dataCache.columns[colIdx];
+                const category = dataCache.y_labels[rowIdx];
+                showResult(period, category);
+                found = true;
+                return true; 
+            }
+        });
+    });
+
+    if (!found) {
+        showError(`未找到版號 ${number} 的相關記錄`);
+    }
+}
+
+function showResult(period, category) {
+    const resultEl = document.getElementById('result');
+    resultEl.className = 'success';
+    resultEl.innerHTML = `
+        <div class="result-item">📜 分期：<strong>${period}</strong></div>
+        <div class="result-item">🏷️ 分類：<strong>${category}</strong></div>
+    `;
+}
+
+function showError(message) {
+    const resultEl = document.getElementById('result');
+    resultEl.className = 'error';
+    resultEl.innerHTML = `⚠️ ${message}`;
+}
+</script>
+
+</body>
+</html>

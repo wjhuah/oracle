@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -16,33 +15,53 @@
 
 <script>
 let data = null;
+let isDataLoaded = false; // 新增：数据加载状态标记
+
+// 数据加载（带错误处理）
 fetch('data.json')  
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error('数据文件未找到'); // 处理404
+    return res.json();
+  })
   .then(json => {
     data = json;
+    isDataLoaded = true; // 数据加载完成
+  })
+  .catch(err => {
+    console.error('加载错误:', err);
+    document.getElementById('result').textContent = '数据加载失败，请检查文件路径';
   });
 
 function searchLocal() {
-  const number = document.getElementById('numberInput').value.trim();
-  if (!number || isNaN(number)) {
-    result.textContent = "請輸入有效的數字版號";
+  const input = document.getElementById('numberInput').value.trim();
+  const result = document.getElementById('result');
+  
+  // 输入验证
+  if (!input || isNaN(input)) {
+    result.textContent = "请输入有效的数字版号";
     return;
   }
-  const target = `.${number}.`;
 
+  // 检查数据是否加载完成
+  if (!isDataLoaded) {
+    result.textContent = "数据加载中，请稍候...";
+    return;
+  }
+
+  const target = `.${input}.`;
   for (let rowIdx = 0; rowIdx < data.rows.length; rowIdx++) {
     const row = data.rows[rowIdx];
     for (let colIdx = 0; colIdx < data.columns.length; colIdx++) {
-      const cell = row[colIdx] || "";
+      const cell = String(row[colIdx] || ''); // 确保单元格为字符串
       if (cell.includes(target)) {
         const x = data.columns[colIdx];
         const y = data.y_labels[rowIdx];
-        document.getElementById('result').textContent = `分期：${x} | 分類：${y}`;
-        return;
+        result.textContent = `分期：${x} | 分類：${y}`;
+        return; // 找到后立即返回
       }
     }
   }
-  document.getElementById('result').textContent = "未找到";
+  result.textContent = "未找到对应的版号";
 }
 </script>
 

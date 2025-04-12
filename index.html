@@ -20,16 +20,19 @@ let isDataLoaded = false; // 新增：数据加载状态标记
 // 数据加载（带错误处理）
 fetch('data.json')  
   .then(res => {
-    if (!res.ok) throw new Error('数据文件未找到'); // 处理404
+    if (!res.ok) {
+      throw new Error(`数据文件加载失败，状态码: ${res.status}`); // 处理404
+    }
     return res.json();
   })
   .then(json => {
     data = json;
     isDataLoaded = true; // 数据加载完成
+    console.log('数据加载成功');
   })
   .catch(err => {
     console.error('加载错误:', err);
-    document.getElementById('result').textContent = '数据加载失败，请检查文件路径';
+    document.getElementById('result').textContent = `数据加载失败: ${err.message}，请检查文件路径`;
   });
 
 function searchLocal() {
@@ -67,3 +70,4 @@ function searchLocal() {
 
 </body>
 </html>
+    

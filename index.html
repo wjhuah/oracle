@@ -138,6 +138,20 @@
 <script>
 let dataCache = null;
 
+fetch('data.json')
+    .then(res => {
+        if (!res.ok) throw new Error('fail');
+        return res.json();
+    })
+    .then(json => {
+        dataCache = json;
+        console.log('done');
+    })
+    .catch(err => {
+        console.error(err);
+        showError('pls retry');
+    });
+    
 document.getElementById('numberInput').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') searchLocal();
 });

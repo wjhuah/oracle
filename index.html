@@ -9,6 +9,7 @@
             font-family: SimSun, serif;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
 
         h1 {
@@ -28,10 +29,17 @@
         p {
             margin-top: 20px;
         }
+
+        #language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 
 <body>
+    <a href="index_en.html" id="language-switch">English</a>
     <div id="container">
         <h1>小屯南地甲骨分期分類查詢系統</h1>
         <input type="number" id="numberInput" placeholder="輸入版號">

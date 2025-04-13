@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Xiaotun South</title>
+    <style>
+        body {
+            font-family: SimSun, serif;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        #language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" id="language-switch">中文</a>
+    <div id="container">
+        <h1>Oracle Bone Inscriptions Query System of Xiaotun South</h1>
+        <input type="number" id="numberInput" placeholder="Enter the number">
+        <button onclick="searchLocal()">Query</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let data = null;
+        let isDataLoaded = false;
+
+        fetch('data_en.json')
+          .then(res => {
+                if (!res.ok) {
+                    throw new Error(`Loading failed, status code: ${res.status}`);
+                }
+                return res.json();
+            })
+          .then(json => {
+                data = json;
+                isDataLoaded = true;
+                console.log('Loading successful');
+            })
+          .catch(err => {
+                console.error('Loading error:', err);
+                document.getElementById('result').innerHTML = `<div>Loading failed: ${err.message}, please check the file path</div>`;
+            });
+
+        function searchLocal() {
+            const input = document.getElementById('numberInput').value.trim();
+            const result = document.getElementById('result');
+
+            if (!input || isNaN(input)) {
+                result.innerHTML = '<div>Please enter a valid positive integer number</div>';
+                return;
+            }
+
+            if (!isDataLoaded) {
+                result.innerHTML = '<div>Loading...</div>';
+                return;
+            }
+
+            const target = `.${input}.`;
+            for (let rowIdx = 0; rowIdx < data.rows.length; rowIdx++) {
+                const row = data.rows[rowIdx];
+                for (let colIdx = 0; colIdx < data.columns.length; colIdx++) {
+                    const cell = String(row[colIdx] || '');
+                    if (cell.includes(target)) {
+                        const x = data.columns[colIdx];
+                        const y = data.y_labels[rowIdx];
+                        result.innerHTML = `<div>Period: ${x}</div><div>Category: ${y}</div>`;
+                        return;
+                    }
+                }
+            }
+            result.innerHTML = '<div>No result found</div>';
+        }
+    </script>
+
+</body>
+
+</html>
+    

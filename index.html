@@ -1,73 +1,97 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<title>小屯南地甲骨分期分類查詢系統</title>
-<style>/* 保持原有样式 */</style>
+    <meta charset="UTF-8">
+    <title>屯南甲骨</title>
+    <style>
+        body {
+            font-family: SimSun, serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
-<div id="container">
-  <h1>小屯南地甲骨分期分類查詢系統</h1>
-  <input type="number" id="numberInput" placeholder="輸入版號">
-  <button onclick="searchLocal()">查詢</button>
-  <p id="result"></p>
-</div>
+    <div id="container">
+        <h1>小屯南地甲骨分期分類查詢系統</h1>
+        <input type="number" id="numberInput" placeholder="輸入版號">
+        <button onclick="searchLocal()">查詢</button>
+        <p id="result"></p>
+    </div>
 
-<script>
-let data = null;
-let isDataLoaded = false; // 新增：数据加载状态标记
+    <script>
+        let data = null;
+        let isDataLoaded = false;
 
-// 数据加载（带错误处理）
-fetch('data.json')  
-  .then(res => {
-    if (!res.ok) {
-      throw new Error(`数据文件加载失败，状态码: ${res.status}`); // 处理404
-    }
-    return res.json();
-  })
-  .then(json => {
-    data = json;
-    isDataLoaded = true; // 数据加载完成
-    console.log('数据加载成功');
-  })
-  .catch(err => {
-    console.error('加载错误:', err);
-    document.getElementById('result').textContent = `数据加载失败: ${err.message}，请检查文件路径`;
-  });
+        fetch('data.json')
+          .then(res => {
+                if (!res.ok) {
+                    throw new Error(`加載失敗，狀態碼: ${res.status}`); // 处理404
+                }
+                return res.json();
+            })
+          .then(json => {
+                data = json;
+                isDataLoaded = true;
+                console.log('加載成功');
+            })
+          .catch(err => {
+                console.error('加載錯誤:', err);
+                document.getElementById('result').innerHTML = `<div>加載失敗: ${err.message}，請檢查文件路徑</div>`;
+            });
 
-function searchLocal() {
-  const input = document.getElementById('numberInput').value.trim();
-  const result = document.getElementById('result');
-  
-  // 输入验证
-  if (!input || isNaN(input)) {
-    result.textContent = "请输入有效的数字版号";
-    return;
-  }
+        function searchLocal() {
+            const input = document.getElementById('numberInput').value.trim();
+            const result = document.getElementById('result');
 
-  // 检查数据是否加载完成
-  if (!isDataLoaded) {
-    result.textContent = "数据加载中，请稍候...";
-    return;
-  }
+            if (!input || isNaN(input)) {
+                result.innerHTML = '<div>請輸入有效的正整數數字版號</div>';
+                return;
+            }
 
-  const target = `.${input}.`;
-  for (let rowIdx = 0; rowIdx < data.rows.length; rowIdx++) {
-    const row = data.rows[rowIdx];
-    for (let colIdx = 0; colIdx < data.columns.length; colIdx++) {
-      const cell = String(row[colIdx] || ''); // 确保单元格为字符串
-      if (cell.includes(target)) {
-        const x = data.columns[colIdx];
-        const y = data.y_labels[rowIdx];
-        result.textContent = `分期：${x} | 分類：${y}`;
-        return; // 找到后立即返回
-      }
-    }
-  }
-  result.textContent = "未找到对应的版号";
-}
-</script>
+            if (!isDataLoaded) {
+                result.innerHTML = '<div>加載中...</div>';
+                return;
+            }
+
+            const target = `.${input}.`;
+            for (let rowIdx = 0; rowIdx < data.rows.length; rowIdx++) {
+                const row = data.rows[rowIdx];
+                for (let colIdx = 0; colIdx < data.columns.length; colIdx++) {
+                    const cell = String(row[colIdx] || '');
+                    if (cell.includes(target)) {
+                        const x = data.columns[colIdx];
+                        const y = data.y_labels[rowIdx];
+                        result.innerHTML = `<div>分期：${x}</div><div>分類：${y}</div>`;
+                        return;
+                    }
+                }
+            }
+            result.innerHTML = '<div>未能找到對應版號</div>';
+        }
+    </script>
 
 </body>
+
 </html>
     

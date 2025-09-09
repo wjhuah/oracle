@@ -38,19 +38,17 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
       <img style="width:100%" src="assets/intro.jpg">
   </div>
   
-> Overview of **PictOBI-20k**:  
-> We present **PictOBI-20k**, a large-scale dataset for evaluating LMMs on the visual decipherment of pictographic Oracle Bone Characters (OBCs). The dataset comprises **20k carefully curated OBC–object image pairs** and over **15k multi-choice questions**. To further assess visual reasoning, we provide **subjective annotations** examining the consistency of reference points between humans and LMMs. Experimental results suggest that while general LMMs exhibit preliminary visual decipherment ability, they often fail to effectively leverage visual information and remain constrained by language priors. We hope PictOBI-20k can serve as a foundation for advancing evaluation and optimization of **visual attention in OBC-oriented LMMs**.
+> Overview of **PictOBI-20k**: We present **PictOBI-20k**, a large-scale dataset for evaluating LMMs on the visual decipherment of pictographic Oracle Bone Characters (OBCs). The dataset comprises **20k carefully curated OBC–object image pairs** and over **15k multi-choice questions**. To further assess visual reasoning, we provide **subjective annotations** examining the consistency of reference points between humans and LMMs. Experimental results suggest that while general LMMs exhibit preliminary visual decipherment ability, they often fail to effectively leverage visual information and remain constrained by language priors. We hope PictOBI-20k can serve as a foundation for advancing evaluation and optimization of **visual attention in OBC-oriented LMMs**.
 
 ## Release
 - [TBA] Public datasets release.  
 - [2025/09/09] 🔥 Github repository for **PictOBI-20k** is online.
 
 
-## General Principles
-##### Centering on the Visual-Decipherment Abilities of LMMs for OBCs
+## Overview of PictOBI-20k
+##### Focusing on the Visual-Decipherment Abilities of LMMs for OBCs
 
-PictOBI-20k is specifically designed to probe how well large multimodal models (LMMs) can visually decipher pictographic Oracle Bone Characters (OBCs).  
-Unlike purely textual decipherment, our benchmark emphasizes **visual alignment between OBCs and their real-world referents**, aligning with the original pictographic nature of the script.
+We collect OBC and real object images from 12 sources, covering multiple font appearances and categories. Based on these, we construct 15,175 multi-choice questions for LMM evaluation. Meanwhile, we conduct human annotations for obtaining reference points on OBC-object image pairs.
 
 <div style="width: 80%; text-align: center; margin:auto;">
       <img style="width:100%" src="assets/overview.jpg">
@@ -58,8 +56,7 @@ Unlike purely textual decipherment, our benchmark emphasizes **visual alignment 
 
 ## OBC and Real-Object Image Sources
 
-We curate OBC images from **eight major resources**, including classic OBC websites (e.g., YinQiWenYuan, XiaoXueTang, GuoXueDaShi) and open datasets such as **Oracle-241, Oracle-50k, HUST-OBS, OBI125, and OBIdatasetIJDH**.  
-Corresponding **real-object images** (≈4.8k) are carefully collected from Freepik, Pexels, Pinterest, and the Academia Sinica Bronze Ware Database, ensuring coverage across 80 representative pictographic categories:contentReference[oaicite:1]{index=1}.
+We collect OBC images from **three OBC-centric** ancient script websites, YinQiWenYuan, XiaoXueTang, and GuoXueDaShi, as well as **five open-source OBC datasets**, including **Oracle-241, Oracle-50k, HUST-OBS, OBI125, and OBIdatasetIJDH**. Corresponding **real-object images** (≈4.8k) are carefully collected from Freepik, Pexels, Pinterest, and the Academia Sinica Bronze Ware Database.
 
 <div style="width: 80%; text-align: center; margin:auto;">
       <img style="width:100%" src="assets/source.png">
@@ -67,16 +64,8 @@ Corresponding **real-object images** (≈4.8k) are carefully collected from Free
 
 ## Benchmark Candidates
 
-We benchmark **11 prominent LMMs**—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM-4.5V, Qwen2.5-VL series, and InternVL3 series—under a unified protocol covering:  
-- **Classification** (multi-choice mapping of OBCs to objects)  
-- **Retrieval** (searching semantically/visually aligned items)  
-- **Variant-group consistency** (alignment stability across glyph variants)
+We evaluate **11** LMMs—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM-4.5V, the Qwen2.5-VL family, and the InternVL3 series—alongside three vision encoders (DINOv2-L/14, CLIP-L/14, InternViT-300M) to assess multimodal and visual-only performance on pictographic OBCs.
 
-In addition, we disentangle performance by testing **standalone vision encoders** (CLIP-L/14, DINOv2-L/14, InternViT-300M) to reveal gaps between vision backbones and multimodal reasoning:contentReference[oaicite:2]{index=2}.
-
-<div style="width: 80%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/candidate.jpg">
-</div>
 
 ## Performance Benchmark on Pictographic OBC Tasks 
 
@@ -110,7 +99,7 @@ In addition, we disentangle performance by testing **standalone vision encoders*
 ## Contact 📧
 Please contact the authors for queries.
 
-- Wenjie Hua, `huawenchieh@gmail.com`
+- Zijian Chen, `zijian.chen@sjtu.edu.cn`
 
 ## Citation📎
 If you find our work interesting, please cite:

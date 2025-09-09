@@ -34,7 +34,7 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
 </div>
 
 <div style="width: 100%; text-align: center; margin:auto;">
-      <img style="width:100%" src="figure/intro.jpg">
+      <img style="width:100%" src="figure/intro.pdf">
   </div>
   
 > Overview of **PictOBI-20k**:  

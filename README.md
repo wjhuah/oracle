@@ -66,6 +66,9 @@ We collect OBC images from **three OBC-centric** ancient script websites, YinQiW
 
 We evaluate **11** LMMs—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM-4.5V, the Qwen2.5-VL family, and the InternVL3 series—alongside three vision encoders (DINOv2-L/14, CLIP-L/14, InternViT-300M) to assess multimodal and visual-only performance on pictographic OBCs.
 
+<div style="width: 80%; text-align: center; margin:auto;">
+      <img style="width:100%" src="assets/candidate.jpg">
+</div>
 
 ## Performance Benchmark on Pictographic OBC Tasks 
 

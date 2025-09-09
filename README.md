@@ -34,7 +34,7 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
 </div>
 
 <div style="width: 100%; text-align: center; margin:auto;">
-      <img style="width:100%" src="figure/intro.jpg">
+      <img style="width:100%" src="assets/intro.jpg">
   </div>
   
 > Overview of **PictOBI-20k**:  
@@ -46,27 +46,36 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
 
 
 ## General Principles
-##### Focusing on OBC Visual-Decipherment Abilities of LMMs & Variant-Aware Evaluation
+##### Centering on the Visual-Decipherment Abilities of LMMs for OBCs
+
+PictOBI-20k is specifically designed to probe how well large multimodal models (LMMs) can visually decipher pictographic Oracle Bone Characters (OBCs).  
+Unlike purely textual decipherment, our benchmark emphasizes **visual alignment between OBCs and their real-world referents**, aligning with the original pictographic nature of the script.
 
 <div style="width: 80%; text-align: center; margin:auto;">
       <img style="width:100%" src="assets/overview.jpg">
-  </div>
+</div>
 
-## Image / Doc Sources
-Dataset figures and outlines are curated from our study materials; we additionally provide short docs for quick orientation.
+## OBC and Real-Object Image Sources
+
+We curate OBC images from **eight major resources**, including classic OBC websites (e.g., YinQiWenYuan, XiaoXueTang, GuoXueDaShi) and open datasets such as **Oracle-241, Oracle-50k, HUST-OBS, OBI125, and OBIdatasetIJDH**.  
+Corresponding **real-object images** (≈4.8k) are carefully collected from Freepik, Pexels, Pinterest, and the Academia Sinica Bronze Ware Database, ensuring coverage across 80 representative pictographic categories:contentReference[oaicite:1]{index=1}.
 
 <div style="width: 80%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/consistency.jpg">
-  </div>
-
-- Docs: [Intro (PDF)](assets/intro.pdf) · [Overview (PDF)](assets/overview.pdf) · [Reference Map (PDF)](assets/reference_map.pdf)
+      <img style="width:100%" src="assets/source.png">
+</div>
 
 ## Benchmark Candidates
-We evaluate representative multimodal models (details in the paper) under unified protocols for classification, retrieval, and variant-group consistency.
+
+We benchmark **11 prominent LMMs**—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM-4.5V, Qwen2.5-VL series, and InternVL3 series—under a unified protocol covering:  
+- **Classification** (multi-choice mapping of OBCs to objects)  
+- **Retrieval** (searching semantically/visually aligned items)  
+- **Variant-group consistency** (alignment stability across glyph variants)
+
+In addition, we disentangle performance by testing **standalone vision encoders** (CLIP-L/14, DINOv2-L/14, InternViT-300M) to reveal gaps between vision backbones and multimodal reasoning:contentReference[oaicite:2]{index=2}.
 
 <div style="width: 80%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/accuracy-class.jpg">
-  </div>
+      <img style="width:100%" src="assets/candidate.jpg">
+</div>
 
 ## Performance Benchmark on Pictographic OBC Tasks 
 

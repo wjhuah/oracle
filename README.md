@@ -59,7 +59,7 @@ We collect OBC and real object images from 12 sources, covering multiple font ap
 We collect OBC images from **three OBC-centric** ancient script websites, YinQiWenYuan, XiaoXueTang, and GuoXueDaShi, as well as **five open-source OBC datasets**, including **Oracle-241, Oracle-50k, HUST-OBS, OBI125, and OBIdatasetIJDH**. Corresponding **real-object images** (≈4.8k) are carefully collected from Freepik, Pexels, Pinterest, and the Academia Sinica Bronze Ware Database.
 
 <div style="width: 80%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/source.png">
+      <img style="width:60%" src="assets/source.png">
 </div>
 
 ## Benchmark Candidates
@@ -67,7 +67,7 @@ We collect OBC images from **three OBC-centric** ancient script websites, YinQiW
 We evaluate **11** LMMs—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM-4.5V, the Qwen2.5-VL family, and the InternVL3 series—alongside three vision encoders (DINOv2-L/14, CLIP-L/14, InternViT-300M) to assess multimodal and visual-only performance on pictographic OBCs.
 
 <div style="width: 80%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/candidate.jpg">
+      <img style="width:60%" src="assets/candidate.jpg">
 </div>
 
 ## Performance Benchmark on Pictographic OBC Tasks 

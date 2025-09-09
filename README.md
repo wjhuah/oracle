@@ -12,14 +12,15 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
 
 
 <div>
-    Zijian Chen<sup>1,2,†</sup>,
-    Wenjie Hua<sup>3,†</sup>,
-    Jinhao Li<sup>4</sup>,
-    Lirong Deng<sup>5</sup>,
-    Fan Du<sup>6</sup>,
-    Tingzhu Chen<sup>1,★</sup>,
-    Guangtao Zhai<sup>1,2,★</sup>
+    <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=NSR4UkMAAAAJ" target="_blank">Zijian Chen</a><sup>1,2,†</sup>,  
+    Wenjie Hua<sup>3,†</sup>,  
+    Jinhao Li<sup>4</sup>,  
+    Lirong Deng<sup>5</sup>,  
+    Fan Du<sup>6</sup>,  
+    <a href="https://shss.sjtu.edu.cn/Web/FacultyDetail/46?f=1&t=4" target="_blank">Tingzhu Chen</a><sup>1,★</sup>,  
+    <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=E6zbSYgAAAAJ" target="_blank">Guangtao Zhai</a><sup>1,2,★</sup>
 </div>
+
 
 <div>
   <sup>1</sup>Shanghai Jiao Tong University  

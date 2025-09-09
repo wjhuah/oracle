@@ -41,9 +41,12 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
   
 > Overview of **PictOBI-20k**: We present **PictOBI-20k**, a large-scale dataset for evaluating LMMs on the visual decipherment of pictographic Oracle Bone Characters (OBCs). The dataset comprises **20k carefully curated OBC–object image pairs** and over **15k multi-choice questions**. To further assess visual reasoning, we provide **subjective annotations** examining the consistency of reference points between humans and LMMs. Experimental results suggest that while general LMMs exhibit preliminary visual decipherment ability, they often fail to effectively leverage visual information and remain constrained by language priors. We hope PictOBI-20k can serve as a foundation for advancing evaluation and optimization of **visual attention in OBC-oriented LMMs**.
 
+Examples of reference point heatmaps:
+
 <p align="center">
   <img src="assets/reference_map.jpg" width="100%">
 </p>
+
 
 ## Release
 - [TBA] Public datasets release.  

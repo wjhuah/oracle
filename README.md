@@ -93,8 +93,8 @@ We evaluate **11** LMMs—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM
   </div>
 </details>
 
-## Dataset Splits 📦
-- [x] To be released with `dataset/` metadata and variant maps.
+## Dataset 📦
+- [x] To be released with `dataset/` OBC and real-object image
 
 ## Contact 📧
 Please contact the authors for queries.

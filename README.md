@@ -115,5 +115,13 @@ Please contact the authors for queries.
 - Zijian Chen, `zijian.chen@sjtu.edu.cn`
 
 ## Citation📎
-If you find our work interesting, please cite:
+If you find our work interesting, please feel free to cite our paper:
+```
+@article{chen2025pictobi20kunveilinglargemultimodal,
+      title={PictOBI-20k: Unveiling Large Multimodal Models in Visual Decipherment for Pictographic Oracle Bone Characters}, 
+      author={Zijian Chen and Wenjie Hua and Jinhao Li and Lirong Deng and Fan Du and Tingzhu Chen and Guangtao Zhai},
+      journal={arXiv preprint arXiv:2509.05773},
+      year={2025},
+}
+```
 

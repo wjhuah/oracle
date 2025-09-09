@@ -53,7 +53,7 @@ Examples of reference point heatmaps:
 - [2025/09/09] 🔥 Github repository for **PictOBI-20k** is online.
 
 
-## Overview of PictOBI-20k
+## Benchmark Design
 ##### Focusing on the Visual-Decipherment Abilities of LMMs for OBCs
 
 We collect OBC and real object images from 12 sources, covering multiple font appearances and categories. Based on these, we construct 15,175 multi-choice questions for LMM evaluation. Meanwhile, we conduct human annotations for obtaining reference points on OBC-object image pairs.

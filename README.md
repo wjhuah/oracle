@@ -41,6 +41,10 @@ _A pioneering benchmark bridging large multimodal models with the visual deciphe
   
 > Overview of **PictOBI-20k**: We present **PictOBI-20k**, a large-scale dataset for evaluating LMMs on the visual decipherment of pictographic Oracle Bone Characters (OBCs). The dataset comprises **20k carefully curated OBC–object image pairs** and over **15k multi-choice questions**. To further assess visual reasoning, we provide **subjective annotations** examining the consistency of reference points between humans and LMMs. Experimental results suggest that while general LMMs exhibit preliminary visual decipherment ability, they often fail to effectively leverage visual information and remain constrained by language priors. We hope PictOBI-20k can serve as a foundation for advancing evaluation and optimization of **visual attention in OBC-oriented LMMs**.
 
+<p align="center">
+  <img src="assets/reference_map.jpg" width="100%">
+</p>
+
 ## Release
 - [TBA] Public datasets release.  
 - [2025/09/09] 🔥 Github repository for **PictOBI-20k** is online.
@@ -57,7 +61,7 @@ We collect OBC and real object images from 12 sources, covering multiple font ap
 
 ## OBC and Real-Object Image Sources
 
-We collect OBC images from **three OBC-centric** ancient script websites, YinQiWenYuan, XiaoXueTang, and GuoXueDaShi, as well as **five open-source OBC datasets**, including **Oracle-241, Oracle-50k, HUST-OBS, OBI125, and OBIdatasetIJDH**. Corresponding **real-object images** (≈4.8k) are carefully collected from Freepik, Pexels, Pinterest, and the Academia Sinica Bronze Ware Database.
+We collect OBC images from **3 OBC-centric** ancient script websites, YinQiWenYuan, XiaoXueTang, and GuoXueDaShi, as well as **5 open-source OBC datasets**, including **Oracle-241, Oracle-50k, HUST-OBS, OBI125, and OBIdatasetIJDH**. Corresponding **real-object images** (≈4.8k) are carefully collected from Freepik, Pexels, Pinterest, and the Academia Sinica Bronze Ware Database.
 
 <p align="center">
   <img src="assets/source.png" width="60%">
@@ -75,28 +79,29 @@ We evaluate **11** LMMs—including GPT-4o, Gemini 2.5 Pro, Claude 4 Sonnet, GLM
 ## Performance Benchmark on Pictographic OBC Tasks 
 
 <details close>
-<summary>Results on the classification tasks (click to expand)</summary>
+<summary>Results on the classification tasks — Average accuracy in terms of OBC classes (click to expand)</summary>
 
-<div style="width: 70%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/accuracy-class.jpg">
-  </div>
+<p align="center">
+  <img src="assets/accuracy-class.jpg" width="80%">
+</p>
 </details>
 
 <details close>
-<summary>Results on the retrieval tasks (click to expand)</summary>
+<summary>Results on the consistency tasks — The consistency (%) of visual reference on 240 OBC–object pairs between humans and LMMs (click to expand)</summary>
 
-<div style="width: 70%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/vision_backbone.jpg">
-  </div>
+<p align="center">
+  <img src="assets/consistency.jpg" width="80%">
+</p>
 </details>
 
 <details close>
-<summary>Results on the consistency (variant-stability) tasks (click to expand)</summary>
+<summary>Results on the vision encoder analysis — Visualization of attention maps (left) and accuracy from direct readout of visual encoders (right) (click to expand)</summary>
 
-<div style="width: 70%; text-align: center; margin:auto;">
-      <img style="width:100%" src="assets/consistency.jpg">
-  </div>
+<p align="center">
+  <img src="assets/vision_backbone.jpg" width="80%">
+</p>
 </details>
+
 
 ## Dataset 📦
 - [x] To be released with `dataset/` OBC and real-object image
